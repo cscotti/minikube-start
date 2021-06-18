@@ -7,6 +7,7 @@ minikube config set memory 4096
 minikube start
 minikube ip
 
+# Minikube MetallB Setting
 # https://github.com/kubernetes/minikube/issues/8283
 ip_range=$(minikube ip | sed -r 's/(.*)./\1/')
 cat ~/.minikube/profiles/minikube/config.json  \
@@ -23,11 +24,13 @@ minikube addons enable dashboard
 minikube addons enable helm-tiller
 minikube addons enable ingress
 minikube addons enable ingress-dns
-k get svc kubernetes-dashboard -n kubernetes-dashboard -o json \
+
+# Patch dashboard service
+kubectl get svc kubernetes-dashboard -n kubernetes-dashboard -o json \
 | jq '.spec.type="LoadBalancer"' \
 | jq '.spec.ports[0].port=8443' | k apply -f -
 
-# open the dashboard directly
+# Open Dashboard directly
 DASHBOARD_URL=http://$(kubectl get svc kubernetes-dashboard  -n kubernetes-dashboard --no-headers | awk '{print $4}'):8080
 echo "$DASHBOARD_URL"
 xdg-open $DASHBOARD_URL
