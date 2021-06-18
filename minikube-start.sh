@@ -28,6 +28,6 @@ k get svc kubernetes-dashboard -n kubernetes-dashboard -o json \
 | jq '.spec.ports[0].port=8443' | k apply -f -
 
 # open the dashboard directly
-$ DASHBOARD_URL=http://$(kubectl get svc kubernetes-dashboard  -n kubernetes-dashboard --no-headers | awk '{print $4}'):8080
-$ echo "$DASHBOARD_URL"
-$ xdg-open $DASHBOARD_URL
+DASHBOARD_URL=http://$(kubectl get svc kubernetes-dashboard  -n kubernetes-dashboard --no-headers | awk '{print $4}'):8080
+echo "$DASHBOARD_URL"
+xdg-open $DASHBOARD_URL
