@@ -66,3 +66,21 @@ xdg-open $DASHBOARD_URL
 # minikube logs -f |grep example
 # minikube update-check
 # minikube ssh
+# minikube dashboard
+# minikube tunnel
+# minikube service xxxx
+
+#  ==============================
+# Docker network
+docker network ls
+docker inspect bridge
+docker inspect bridge |jq '.[0].IPAM.Config[0].Gateway'
+docker port xxxx:latest
+
+# ===============================
+# Docker build
+docker build -t myssh:v1 .
+
+# ===============================
+#  Docker run / Daemon
+# docker run -d -P --name mytest myssh:v1
