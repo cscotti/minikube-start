@@ -1,8 +1,14 @@
 #!/bin/bash
 
-#rm -Rf ~/.minikube
+# minikube stop && minikube delete && rm -Rf $HOME/.minikube
+# minikube start --cpus 4 --memory 8192 --kubernetes-version=v1.20.0 --vm-driver=virtualbox
+# minikube start --kubernetes-version=v1.16.1 --vm-driver=hyperkit --cpus 4 --memory 8192 --show-libmachine-logs --v=10 --alsologtostderr
+
 minikube config set cpus 2
 minikube config set memory 4096
+minikube config set vm-driver virtualbox
+minikube config set kubernetes-version v1.20.0
+minikube config set WantVirtualBoxDriverWarning false
 
 minikube start
 minikube ip
@@ -15,6 +21,9 @@ cat ~/.minikube/profiles/minikube/config.json  \
     | jq '.KubernetesConfig.LoadBalancerEndIP="'${ip_range}120'"'   \
  > ~/.minikube/profiles/minikube/config.json.tmp \
     && mv ~/.minikube/profiles/minikube/config.json.tmp ~/.minikube/profiles/minikube/config.json 
+
+# ===============================
+# Addons
 
 minikube addons enable metallb
 minikube addons configure metallb
@@ -34,3 +43,26 @@ kubectl get svc kubernetes-dashboard -n kubernetes-dashboard -o json \
 DASHBOARD_URL=http://$(kubectl get svc kubernetes-dashboard  -n kubernetes-dashboard --no-headers | awk '{print $4}'):8080
 echo "$DASHBOARD_URL"
 xdg-open $DASHBOARD_URL
+
+# ===============================
+# Image / Load and remove (new)
+
+# minikube image load xxxx:latest
+# minikube image list
+# minikube image rm docker.io/library/xxxx:latest
+
+# ===============================
+# Image / Load and remove (old)
+
+# minikube cache add xxxx:latest
+# minikube cache list
+# minikube cache reload
+# minikube cache delete xxxx:latest
+
+# ===============================
+# Divers
+
+# minikube event
+# minikube logs -f |grep example
+# minikube update-check
+# minikube ssh
