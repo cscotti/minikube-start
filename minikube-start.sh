@@ -72,15 +72,18 @@ xdg-open $DASHBOARD_URL
 
 #  ==============================
 # Docker network
-docker network ls
-docker inspect bridge
-docker inspect bridge |jq '.[0].IPAM.Config[0].Gateway'
-docker port xxxx:latest
+
+# docker network ls
+# docker inspect bridge
+# docker inspect bridge |jq '.[0].IPAM.Config[0].Gateway'
+# docker port xxxx:latest
 
 # ===============================
 # Docker build
-docker build -t myssh:v1 .
+
+# docker build -t myssh:v1 .
 
 # ===============================
 #  Docker run / Daemon
+
 # docker run -d -P --name mytest myssh:v1
