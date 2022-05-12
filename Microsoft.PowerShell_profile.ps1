@@ -1,5 +1,7 @@
 # Desc Alias for powershell (:p)
-# ===== TODO ===========
+# ===== REQUIREMENT ===========
+# Windows + virtualbox
+# ===== TODO ==================
 # cd $env:USERPROFILE\Documents
 # md WindowsPowerShell -ErrorAction SilentlyContinue
 # cd WindowsPowerShell
