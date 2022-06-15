@@ -6,12 +6,15 @@
 
 minikube config set cpus 2
 minikube config set memory 4096
-minikube config set vm-driver virtualbox
-minikube config set kubernetes-version v1.20.0
-minikube config set WantVirtualBoxDriverWarning false
+minikube config set vm-driver hyperkit
+minikube config set kubernetes-version v1.21.11
+#minikube config set WantVirtualBoxDriverWarning false
 
 minikube start
 minikube ip
+
+# link docker
+eval $(minikube docker-env)
 
 # Minikube MetallB Setting
 # https://github.com/kubernetes/minikube/issues/8283
