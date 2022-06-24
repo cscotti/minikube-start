@@ -29,6 +29,7 @@ cat ~/.minikube/profiles/minikube/config.json  \
 
 # ===============================
 # Addons
+minikube addons list
 
 minikube addons enable metallb
 minikube addons configure metallb
