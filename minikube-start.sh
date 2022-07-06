@@ -15,7 +15,9 @@ minikube start
 minikube ip
 
 # link docker
-#eval $(minikube docker-env)
+# minikube docker-env
+# eval $(minikube -p minikube docker-env)
+# eval $(minikube docker-env)
 eval $(minikube -p minikube docker-env)
 
 # Minikube MetallB Setting
