@@ -20,9 +20,8 @@ minikube config set container-runtime docker
 # run
 
 minikube start
-minikube ip
 
-# Set docker env
+# Set docker env in local shell
 # eval $(minikube docker-env)             # unix shells
 # eval $(minikube -p minikube docker-env) # unix shells
 # minikube docker-env | Invoke-Expression # PowerShell
@@ -75,6 +74,7 @@ xdg-open $DASHBOARD_URL
 # ===============================
 # Divers
 
+# minikube ip
 # minikube event
 # minikube logs -f |grep example
 # minikube update-check
