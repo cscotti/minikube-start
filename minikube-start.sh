@@ -62,14 +62,14 @@ minikube mount "$(pwd)":"$(pwd)"
 # Volume mount for mac (but can be also run under linux)
 # https://github.com/kubernetes/minikube/issues/2481
 
-ssh-keygen -R $(minikube ip)
-scp -ri "$(minikube ssh-key)" "$PWD" docker@$(minikube ip):/tmp
+# ssh-keygen -R $(minikube ip)
+# scp -ri "$(minikube ssh-key)" "$PWD" docker@$(minikube ip):/tmp
 
 # start container
-docker run --name node_build -v /tmp:/source -d ubuntu:22.10 bash -c "tail -f /dev/null"
+# docker run --name node_build -v /tmp:/source -d ubuntu:22.10 bash -c "tail -f /dev/null"
 
 # restart container if stopped
-docker restart node_build
+# docker restart node_build
 
 # ===============================
 # Image / Load and remove (new)
@@ -107,7 +107,7 @@ docker restart node_build
 
 
 # When running standard docker compose commands you might need an additional port forward to access your containers
-ssh -i ~/.minikube/machines/minikube/id_rsa docker@$(minikube ip) -L '*:19088:0.0.0.0:19088' -N
+# ssh -i ~/.minikube/machines/minikube/id_rsa docker@$(minikube ip) -L '*:19088:0.0.0.0:19088' -N
 # Hint: The first port is on the host, the second the post exposed by the container inside minikube.
 
 # ===============================
