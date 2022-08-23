@@ -80,7 +80,7 @@ xdg-open $DASHBOARD_URL
 # docker exec test-build cp /source/file.txt /target/file.txt
 
 # ===============================
-# volume mount
+# volume mount - option 1
 
 # step 1- mount the disk on the laptop to the Hyperkit VM
 # minikube mount /myvolume:/test
@@ -95,8 +95,20 @@ xdg-open $DASHBOARD_URL
 # minikube mount $(pwd)/workdir:/workdir
 # docker run --name test-build -v /workdir:/workdir -d test-build:latest test-build
 
+# ===============================
+# Volume mount - option 2
+
+# stop minikube
+# minikube stop
+
+# start minikube with volument mount
+# minikube start --mount --mount-string="/private/var/services/:/private/var/services/"
+
+# volume will be created inside the minikube vm
+# docker run -d --name redis -p 6379:6379 -v /private/var/services/redis:/data redis:5.0.3
 
 # ===============================
+# Volume mount - option 3
 # mac alternative - Volume mount (but can be also run under linux)
 # https://github.com/kubernetes/minikube/issues/2481
 
