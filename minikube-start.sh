@@ -54,11 +54,33 @@ DASHBOARD_URL=http://$(kubectl get svc kubernetes-dashboard  -n kubernetes-dashb
 echo "$DASHBOARD_URL"
 xdg-open $DASHBOARD_URL
 
+
+# ===============================
+# build
+# docker build . -t test-build:latest
+
+# start container
+# docker stop test-build
+# docker rm test-build
+# docker run --name test-build -d test-build:latest bash -c "tail -f /dev/null"
+
+# access to container prompt
+# docker exec -it test-build /bin/sh
+
+# restart container if stopped
+# docker restart test-build
+
+# container log
+# docker logs test-build
+
+# copy file
+# docker exec test-build cp /source/file.txt /target/file.txt
+
 # ===============================
 # volume mount
 
 # minikube mount $(pwd)/workdir:/workdir
-# docker run --name test-ubuntu -v "$PWD":/workdir -d ubuntu:latest test-ubuntu
+# docker run --name test-build -v "$PWD":/workdir -d test-build:latest test-build
 
 # ===============================
 # mac alternative - Volume mount (but can be also run under linux)
@@ -69,10 +91,6 @@ xdg-open $DASHBOARD_URL
 
 # start container
 # docker run --name node_build -v /tmp:/source -d ubuntu:22.10 bash -c "tail -f /dev/null"
-
-# restart container if stopped
-# docker restart node_build
-
 # ===============================
 # Image / Load and remove (new)
 
