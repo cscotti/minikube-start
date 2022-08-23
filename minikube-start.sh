@@ -5,6 +5,9 @@
 # minikube start --kubernetes-version=v1.16.1 --vm-driver=hyperkit --cpus 4 --memory 8192 --show-libmachine-logs --v=10 --alsologtostderr
 # minikube start --kubernetes-version=v1.21.11 --vm-driver=hyperkit --cpus 2 --memory 4096 --container-runtime=docker
 
+# ===============
+# config
+
 minikube config set cpus 2
 minikube config set memory 4096
 # minikube config set driver docker
@@ -13,17 +16,29 @@ minikube config set kubernetes-version v1.21.11
 minikube config set container-runtime docker
 #minikube config set WantVirtualBoxDriverWarning false
 
+#===============
+# run
+
 minikube start
 minikube ip
-
-# minikube configurations will be stored in the following config file 
-# ~/.minikube/machines/minikube/config.json
 
 # Set docker env
 # eval $(minikube docker-env)             # unix shells
 # eval $(minikube -p minikube docker-env) # unix shells
 # minikube docker-env | Invoke-Expression # PowerShell
 eval $(minikube -p minikube docker-env)
+
+
+# ===============
+# config / settings
+
+# increase virtual memory
+# in some scenarios(e.g running elasticsearch) it required more virual memory
+# minikube ssh
+# sudo sysctl -w vm.max_map_count=262144
+
+# minikube configurations will be stored in the following config file 
+# ~/.minikube/machines/minikube/config.json
 
 # Minikube MetallB Setting
 # https://github.com/kubernetes/minikube/issues/8283
@@ -57,8 +72,41 @@ DASHBOARD_URL=http://$(kubectl get svc kubernetes-dashboard  -n kubernetes-dashb
 echo "$DASHBOARD_URL"
 xdg-open $DASHBOARD_URL
 
+# ===============================
+# Divers
+
+# minikube event
+# minikube logs -f |grep example
+# minikube update-check
+# minikube ssh
+# minikube dashboard
+# minikube tunnel
+# minikube service xxxx
 
 # ===============================
+# Image / Load and remove (new)
+
+# minikube image load xxxx:latest
+# minikube image list
+# minikube image rm docker.io/library/xxxx:latest
+
+# ===============================
+# Image / Load and remove (old)
+
+# minikube cache add xxxx:latest
+# minikube cache list
+# minikube cache reload
+# minikube cache delete xxxx:latest
+
+
+# *************************
+# docker
+# *************************
+
+
+# ===============================
+# docker run
+
 # build
 # docker build . -t test-build:latest
 
@@ -80,7 +128,7 @@ xdg-open $DASHBOARD_URL
 # docker exec test-build cp /source/file.txt /target/file.txt
 
 # ===============================
-# volume mount - option 1
+# docker volume mount - option 1
 
 # step 1- mount the disk on the laptop to the Hyperkit VM
 # minikube mount /myvolume:/test
@@ -96,7 +144,7 @@ xdg-open $DASHBOARD_URL
 # docker run --name test-build -v /workdir:/workdir -d test-build:latest test-build
 
 # ===============================
-# Volume mount - option 2
+# docker Volume mount - option 2
 
 # stop minikube
 # minikube stop
@@ -108,7 +156,7 @@ xdg-open $DASHBOARD_URL
 # docker run -d --name redis -p 6379:6379 -v /private/var/services/redis:/data redis:5.0.3
 
 # ===============================
-# Volume mount - option 3
+# docker Volume mount - option 3
 # mac alternative - Volume mount (but can be also run under linux)
 # https://github.com/kubernetes/minikube/issues/2481
 
@@ -117,31 +165,6 @@ xdg-open $DASHBOARD_URL
 
 # start container
 # docker run --name node_build -v /tmp:/source -d ubuntu:22.10 bash -c "tail -f /dev/null"
-# ===============================
-# Image / Load and remove (new)
-
-# minikube image load xxxx:latest
-# minikube image list
-# minikube image rm docker.io/library/xxxx:latest
-
-# ===============================
-# Image / Load and remove (old)
-
-# minikube cache add xxxx:latest
-# minikube cache list
-# minikube cache reload
-# minikube cache delete xxxx:latest
-
-# ===============================
-# Divers
-
-# minikube event
-# minikube logs -f |grep example
-# minikube update-check
-# minikube ssh
-# minikube dashboard
-# minikube tunnel
-# minikube service xxxx
 
 #  ==============================
 # Docker network
@@ -169,8 +192,10 @@ xdg-open $DASHBOARD_URL
 
 # docker run -d -P --name mytest myssh:v1
 
+
+
 # ===============================
-# doc
+# ref : minikube doc
 # https://devops.datenkollektiv.de/minikube-developing-and-testing-locally-with-k8s.html
 # https://stackoverflow.com/questions/42564058/how-to-use-local-docker-images-with-minikube
 # https://medium.com/rahasak/replace-docker-desktop-with-minikube-and-hyperkit-on-macos-783ce4fb39e3
