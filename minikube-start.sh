@@ -79,8 +79,16 @@ xdg-open $DASHBOARD_URL
 # ===============================
 # volume mount
 
+# step 1- mount the disk on the laptop to the Hyperkit VM
+minikube mount /myvolume:/test
+
+# step 2- run docker
+docker run --rm -it -v /test:/inside busybox /bin/sh
+
+# ex 2
 # minikube mount $(pwd)/workdir:/workdir
-# docker run --name test-build -v "$PWD":/workdir -d test-build:latest test-build
+# docker run --name test-build -v /workdir:/workdir -d test-build:latest test-build
+
 
 # ===============================
 # mac alternative - Volume mount (but can be also run under linux)
