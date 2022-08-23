@@ -121,3 +121,7 @@ xdg-open $DASHBOARD_URL
 #  Docker run / Daemon
 
 # docker run -d -P --name mytest myssh:v1
+
+# ===============================
+# doc
+# https://devops.datenkollektiv.de/minikube-developing-and-testing-locally-with-k8s.html
