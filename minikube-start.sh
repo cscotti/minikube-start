@@ -1,14 +1,5 @@
 #!/bin/bash
 
-# minikube stop && minikube delete && rm -Rf $HOME/.minikube
-# minikube start --cpus 4 --memory 8192 --kubernetes-version=v1.20.0 --vm-driver=virtualbox
-# minikube start --kubernetes-version=v1.16.1 --vm-driver=hyperkit --cpus 4 --memory 8192 --show-libmachine-logs --v=10 --alsologtostderr
-# minikube start --kubernetes-version=v1.21.11 --vm-driver=hyperkit --cpus 2 --memory 4096 --container-runtime=docker
-
-# The Minikube recent update(v1.24.0) supports to start Minikube VM without starting any Kubernetes in it
-# used the flag --no-kubernetes
-# minikube start --no-kubernetes --memory 4096 --cpus 2 --docker-opt=bip=172.17.42.1/16
-
 # ===============
 # config
 
@@ -21,13 +12,23 @@ minikube config set container-runtime docker
 #minikube config set WantVirtualBoxDriverWarning false
 
 #===============
-# run
+# start minikube
 
 minikube start
+
+# minikube stop && minikube delete && rm -Rf $HOME/.minikube
+# minikube start --cpus 4 --memory 8192 --kubernetes-version=v1.20.0 --vm-driver=virtualbox
+# minikube start --kubernetes-version=v1.16.1 --vm-driver=hyperkit --cpus 4 --memory 8192 --show-libmachine-logs --v=10 --alsologtostderr
+# minikube start --kubernetes-version=v1.21.11 --vm-driver=hyperkit --cpus 2 --memory 4096 --container-runtime=docker
+
+# The Minikube recent update(v1.24.0) supports to start Minikube VM without starting any Kubernetes in it
+# used the flag --no-kubernetes
+# minikube start --no-kubernetes --memory 4096 --cpus 2 --docker-opt=bip=172.17.42.1/16
 
 # configure minikube cluster with new bridge ip
 # minikube start --docker-opt=bip=172.17.42.1/16
 
+#===============
 # Set docker env in local shell
 # eval $(minikube docker-env)             # unix shells
 # eval $(minikube -p minikube docker-env) # unix shells
