@@ -16,10 +16,10 @@ minikube config set container-runtime docker
 minikube start
 minikube ip
 
-# link docker
-# minikube docker-env
-# eval $(minikube -p minikube docker-env)
-# eval $(minikube docker-env)
+# Set docker env
+# eval $(minikube docker-env)             # unix shells
+# eval $(minikube -p minikube docker-env) # unix shells
+# minikube docker-env | Invoke-Expression # PowerShell
 eval $(minikube -p minikube docker-env)
 
 # Minikube MetallB Setting
