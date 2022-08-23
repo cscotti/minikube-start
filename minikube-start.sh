@@ -88,6 +88,9 @@ xdg-open $DASHBOARD_URL
 # step 2- run docker
 # docker run --rm -it -v /test:/inside busybox /bin/sh
 
+# ssh to minikube to view the volume /test
+# minikube ssh
+
 # ex 2
 # minikube mount $(pwd)/workdir:/workdir
 # docker run --name test-build -v /workdir:/workdir -d test-build:latest test-build
