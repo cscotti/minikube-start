@@ -16,6 +16,9 @@ minikube config set container-runtime docker
 minikube start
 minikube ip
 
+# minikube configurations will be stored in the following config file 
+# ~/.minikube/machines/minikube/config.json
+
 # Set docker env
 # eval $(minikube docker-env)             # unix shells
 # eval $(minikube -p minikube docker-env) # unix shells
@@ -138,6 +141,9 @@ xdg-open $DASHBOARD_URL
 # ssh -i ~/.minikube/machines/minikube/id_rsa docker@$(minikube ip) -L '*:19088:0.0.0.0:19088' -N
 # Hint: The first port is on the host, the second the post exposed by the container inside minikube.
 
+# add minikube ip to /etc/hosts if want
+# echo "`minikube ip` docker.local" | sudo tee -a /etc/hosts > /dev/null
+
 # ===============================
 # Docker build
 
@@ -151,3 +157,5 @@ xdg-open $DASHBOARD_URL
 # ===============================
 # doc
 # https://devops.datenkollektiv.de/minikube-developing-and-testing-locally-with-k8s.html
+# https://stackoverflow.com/questions/42564058/how-to-use-local-docker-images-with-minikube
+# https://medium.com/rahasak/replace-docker-desktop-with-minikube-and-hyperkit-on-macos-783ce4fb39e3
