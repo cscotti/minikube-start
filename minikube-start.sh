@@ -204,6 +204,7 @@ xdg-open $DASHBOARD_URL
 
 # ===============================
 # ref : minikube doc
+# https://itnext.io/goodbye-docker-desktop-hello-minikube-3649f2a1c469
 # https://devops.datenkollektiv.de/minikube-developing-and-testing-locally-with-k8s.html
 # https://stackoverflow.com/questions/42564058/how-to-use-local-docker-images-with-minikube
 # https://medium.com/rahasak/replace-docker-desktop-with-minikube-and-hyperkit-on-macos-783ce4fb39e3
