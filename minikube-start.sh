@@ -55,12 +55,13 @@ echo "$DASHBOARD_URL"
 xdg-open $DASHBOARD_URL
 
 # ===============================
-# mount
+# volume mount
 
-minikube mount "$(pwd)":"$(pwd)"
+# minikube mount $(pwd)/workdir:/workdir
+# docker run --name test-ubuntu -v "$PWD":/workdir -d ubuntu:latest test-ubuntu
 
 # ===============================
-# Volume mount for mac (but can be also run under linux)
+# mac alternative - Volume mount (but can be also run under linux)
 # https://github.com/kubernetes/minikube/issues/2481
 
 # ssh-keygen -R $(minikube ip)
