@@ -21,6 +21,9 @@ minikube config set container-runtime docker
 
 minikube start
 
+# configure minikube cluster with new bridge ip
+# minikube start --docker-opt=bip=172.17.42.1/16
+
 # Set docker env in local shell
 # eval $(minikube docker-env)             # unix shells
 # eval $(minikube -p minikube docker-env) # unix shells
