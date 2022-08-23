@@ -3,6 +3,7 @@
 # minikube stop && minikube delete && rm -Rf $HOME/.minikube
 # minikube start --cpus 4 --memory 8192 --kubernetes-version=v1.20.0 --vm-driver=virtualbox
 # minikube start --kubernetes-version=v1.16.1 --vm-driver=hyperkit --cpus 4 --memory 8192 --show-libmachine-logs --v=10 --alsologtostderr
+# minikube start --kubernetes-version=v1.21.11 --vm-driver=hyperkit --cpus 2 --memory 4096 --container-runtime=docker
 
 minikube config set cpus 2
 minikube config set memory 4096
@@ -53,6 +54,24 @@ echo "$DASHBOARD_URL"
 xdg-open $DASHBOARD_URL
 
 # ===============================
+# mount
+
+minikube mount "$(pwd)":"$(pwd)"
+
+# ===============================
+# Volume mount for mac (but can be also run under linux)
+# https://github.com/kubernetes/minikube/issues/2481
+
+ssh-keygen -R $(minikube ip)
+scp -ri "$(minikube ssh-key)" "$PWD" docker@$(minikube ip):/tmp
+
+# start container
+docker run --name node_build -v /tmp:/source -d ubuntu:22.10 bash -c "tail -f /dev/null"
+
+# restart container if stopped
+docker restart node_build
+
+# ===============================
 # Image / Load and remove (new)
 
 # minikube image load xxxx:latest
@@ -85,6 +104,11 @@ xdg-open $DASHBOARD_URL
 # docker inspect bridge
 # docker inspect bridge |jq '.[0].IPAM.Config[0].Gateway'
 # docker port xxxx:latest
+
+
+# When running standard docker compose commands you might need an additional port forward to access your containers
+ssh -i ~/.minikube/machines/minikube/id_rsa docker@$(minikube ip) -L '*:19088:0.0.0.0:19088' -N
+# Hint: The first port is on the host, the second the post exposed by the container inside minikube.
 
 # ===============================
 # Docker build
