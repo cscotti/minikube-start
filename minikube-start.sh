@@ -23,6 +23,7 @@ minikube start
 
 # The Minikube recent update(v1.24.0) supports to start Minikube VM without starting any Kubernetes in it
 # used the flag --no-kubernetes
+# minikube config unset kubernetes-version
 # minikube start --no-kubernetes --memory 4096 --cpus 2 --docker-opt=bip=172.17.42.1/16
 
 # configure minikube cluster with new bridge ip
