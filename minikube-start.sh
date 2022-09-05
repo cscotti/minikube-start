@@ -206,7 +206,7 @@ xdg-open $DASHBOARD_URL
 # ===============================
 # dev container
 # ===============================
-<https://github.com/Microsoft/vscode-dev-containers/tree/main/containers/kubernetes-helm>
+# https://github.com/Microsoft/vscode-dev-containers/tree/main/containers/kubernetes-helm
 
 
 # ref : minikube doc
