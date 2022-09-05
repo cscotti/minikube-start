@@ -201,9 +201,14 @@ xdg-open $DASHBOARD_URL
 
 # docker run -d -P --name mytest myssh:v1
 
-
+# ===============================
 
 # ===============================
+# dev container
+# ===============================
+<https://github.com/Microsoft/vscode-dev-containers/tree/main/containers/kubernetes-helm>
+
+
 # ref : minikube doc
 # https://itnext.io/goodbye-docker-desktop-hello-minikube-3649f2a1c469
 # https://devops.datenkollektiv.de/minikube-developing-and-testing-locally-with-k8s.html
