@@ -214,3 +214,6 @@ xdg-open $DASHBOARD_URL
 # https://devops.datenkollektiv.de/minikube-developing-and-testing-locally-with-k8s.html
 # https://stackoverflow.com/questions/42564058/how-to-use-local-docker-images-with-minikube
 # https://medium.com/rahasak/replace-docker-desktop-with-minikube-and-hyperkit-on-macos-783ce4fb39e3
+
+# network
+# https://gist.github.com/elsonrodriguez/add59648d097314d2aac9b3c8931278b
