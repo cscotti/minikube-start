@@ -102,6 +102,14 @@ docker logs test-build
 
 # copy file
 docker exec test-build cp /source/file.txt /target/file.txt
+
+# push image to docker hub
+# https://docs.docker.com/docker-hub/access-tokens/
+docker image tag ansible-master:latest <user>/ansible-master:latest
+docker image push <user>/ansible-master:latest
+docker login -u <user>
+docker image push <user>/ansible-master:latest
+
 ```
 
 ## Docker / Optimize local ressource
