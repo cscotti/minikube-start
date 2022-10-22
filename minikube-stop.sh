@@ -1,1 +1,1 @@
-minikube stop
+minikube stop -p minikube
