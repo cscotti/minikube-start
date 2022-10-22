@@ -6,27 +6,30 @@ start minikube with additionnal plugins
 
 <!-- toc -->
 
-- [Minikube / Misc commands](#minikube--misc-commands)
-- [Image / Load and remove (new)](#image--load-and-remove-new)
-- [Image / Load and remove (old)](#image--load-and-remove-old)
-- [Docker / commun](#docker--commun)
-- [Docker / optimize local ressource](#docker--optimize-local-ressource)
-- [Docker / Volume](#docker--volume)
-  * [Volume Mount - option 1](#volume-mount---option-1)
-  * [Volume Mount - option 2](#volume-mount---option-2)
-  * [Volume Mount - option 3](#volume-mount---option-3)
-- [Docker / Network](#docker--network)
-- [Docker / Build](#docker--build)
-- [Docker / Run + Daemon](#docker--run--daemon)
-- [Docker + Vscode Editor -> Dev container](#docker--vscode-editor---dev-container)
-- [Minikube reference](#minikube-reference)
-- [Network](#network)
+- [Minikube](#minikube)
+  * [Misc commands](#misc-commands)
+  * [Minikube / Load and remove image (new)](#minikube--load-and-remove-image-new)
+  * [Minikube / Load and remove image (old)](#minikube--load-and-remove-image-old)
+  * [Minikube / Reference](#minikube--reference)
+  * [Minikube / Network](#minikube--network)
+- [Docker](#docker)
+  * [Commun Commands](#commun-commands)
+  * [Docker / Optimize local ressource](#docker--optimize-local-ressource)
+  * [Docker / Volume](#docker--volume)
+    + [Volume Mount - option 1](#volume-mount---option-1)
+    + [Volume Mount - option 2](#volume-mount---option-2)
+    + [Volume Mount - option 3](#volume-mount---option-3)
+  * [Docker / Network](#docker--network)
+  * [Docker / Build](#docker--build)
+  * [Docker / Run + Daemon](#docker--run--daemon)
+  * [Docker + Vscode Editor -> Dev container](#docker--vscode-editor---dev-container)
 - [Annexe](#annexe)
   * [README.md - table content / markdown generator](#readmemd---table-content--markdown-generator)
 
 <!-- tocstop -->
 
-# Minikube / Misc commands
+# Minikube 
+## Misc commands
 
 ```
 minikube ip
@@ -39,23 +42,32 @@ minikube tunnel
 minikube service xxxx
 ```
 
-# Image / Load and remove (new)
+## Minikube / Load and remove image (new)
 ```
 minikube image load xxxx:latest
 minikube image list
 minikube image rm docker.io/library/xxxx:latest
 ```
 
-# Image / Load and remove (old)
+## Minikube / Load and remove image (old)
 ```
 minikube cache add xxxx:latest
 minikube cache list
 minikube cache reload
 minikube cache delete xxxx:latest
 ```
+## Minikube / Reference
 
+<https://itnext.io/goodbye-docker-desktop-hello-minikube-3649f2a1c469><br>
+<https://devops.datenkollektiv.de/minikube-developing-and-testing-locally-with-k8s.html><br>
+<https://stackoverflow.com/questions/42564058/how-to-use-local-docker-images-with-minikube><br>
+<https://medium.com/rahasak/replace-docker-desktop-with-minikube-and-hyperkit-on-macos-783ce4fb39e3><br>
 
-# Docker / commun
+## Minikube / Network
+<https://gist.github.com/elsonrodriguez/add59648d097314d2aac9b3c8931278b>
+
+# Docker
+## Commun Commands
 
 ```
 # docker run
@@ -81,15 +93,15 @@ docker logs test-build
 docker exec test-build cp /source/file.txt /target/file.txt
 ```
 
-# Docker / optimize local ressource
+## Docker / Optimize local ressource
 The Minikube recent update(v1.24.0) supports to start Minikube VM without starting any Kubernetes in it
 used the flag --no-kubernetes
 ```
 minikube config unset kubernetes-version
 ```
 
-# Docker / Volume
-## Volume Mount - option 1
+## Docker / Volume
+### Volume Mount - option 1
 
 ```
 # step 1- mount the disk on the laptop to the Hyperkit VM
@@ -105,7 +117,7 @@ minikube ssh
 minikube mount $(pwd)/workdir:/workdir
 docker run --name test-build -v /workdir:/workdir -d test-build:latest test-build
 ```
-## Volume Mount - option 2
+### Volume Mount - option 2
 ```
 stop minikube
 minikube stop
@@ -117,7 +129,7 @@ minikube start --mount --mount-string="/private/var/services/:/private/var/servi
 docker run -d --name redis -p 6379:6379 -v /private/var/services/redis:/data redis:5.0.3
 ```
 
-## Volume Mount - option 3
+### Volume Mount - option 3
 <https://github.com/kubernetes/minikube/issues/2481><br>
 ```
 # mac alternative - Volume mount (but can be also run under linux)
@@ -129,7 +141,7 @@ scp -ri "$(minikube ssh-key)" "$PWD" docker@$(minikube ip):/tmp
 docker run --name node_build -v /tmp:/source -d ubuntu:22.10 bash -c "tail -f /dev/null"
 ```
 
-# Docker / Network
+## Docker / Network
 ```
 # configure minikube cluster with new bridge ip
 minikube start --docker-opt=bip=172.17.42.1/16
@@ -155,30 +167,19 @@ ssh -i ~/.minikube/machines/minikube/id_rsa docker@$(minikube ip) -L '*:19088:0.
 echo "`minikube ip` docker.local" | sudo tee -a /etc/hosts > /dev/null
 ```
 
-# Docker / Build
+## Docker / Build
 ```
 docker build -t myssh:v1 .
 ```
 
-#  Docker / Run + Daemon
+## Docker / Run + Daemon
 ```
 docker run -d -P --name mytest myssh:v1
 ```
 
-# Docker + Vscode Editor -> Dev container
+## Docker + Vscode Editor -> Dev container
 
 <https://github.com/Microsoft/vscode-dev-containers/tree/main/containers/kubernetes-helm>~~~~
-
-
-# Minikube reference
-
-<https://itnext.io/goodbye-docker-desktop-hello-minikube-3649f2a1c469><br>
-<https://devops.datenkollektiv.de/minikube-developing-and-testing-locally-with-k8s.html><br>
-<https://stackoverflow.com/questions/42564058/how-to-use-local-docker-images-with-minikube><br>
-<https://medium.com/rahasak/replace-docker-desktop-with-minikube-and-hyperkit-on-macos-783ce4fb39e3><br>
-
-# Network
-<https://gist.github.com/elsonrodriguez/add59648d097314d2aac9b3c8931278b>
 
 
 # Annexe
