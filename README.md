@@ -6,36 +6,38 @@ start minikube with additionnal plugins
 
 <!-- toc -->
 
+- [minikube start script](#minikube-start-script)
+- [Table of contents](#table-of-contents)
 - [File content](#file-content)
 - [Minikube](#minikube)
-  * [Misc commands](#misc-commands)
-  * [Minikube / Load and remove image (new)](#minikube--load-and-remove-image-new)
-  * [Minikube / Load and remove image (old)](#minikube--load-and-remove-image-old)
-  * [Minikube / Reference](#minikube--reference)
-  * [Minikube / Network](#minikube--network)
+  - [Misc commands](#misc-commands)
+  - [Minikube / Load and remove image (new)](#minikube--load-and-remove-image-new)
+  - [Minikube / Load and remove image (old)](#minikube--load-and-remove-image-old)
+  - [Minikube / Reference](#minikube--reference)
+  - [Minikube / Network](#minikube--network)
 - [Docker](#docker)
-  * [Commun Commands](#commun-commands)
-  * [Docker / Optimize local ressource](#docker--optimize-local-ressource)
-  * [Docker / Volume](#docker--volume)
-    + [Volume Mount - option 1](#volume-mount---option-1)
-    + [Volume Mount - option 2](#volume-mount---option-2)
-    + [Volume Mount - option 3](#volume-mount---option-3)
-  * [Docker / Network](#docker--network)
-  * [Docker / Build](#docker--build)
-  * [Docker / Run + Daemon](#docker--run--daemon)
-  * [Docker + Vscode Editor -> Dev container](#docker--vscode-editor---dev-container)
+  - [Commun Commands](#commun-commands)
+  - [Docker / Optimize local ressource](#docker--optimize-local-ressource)
+  - [Docker / Volume](#docker--volume)
+    - [Volume Mount - option 1](#volume-mount---option-1)
+    - [Volume Mount - option 2](#volume-mount---option-2)
+    - [Volume Mount - option 3](#volume-mount---option-3)
+  - [Docker / Network](#docker--network)
+  - [Docker / Build](#docker--build)
+  - [Docker / Run + Daemon](#docker--run--daemon)
+  - [Docker + Vscode Editor -> Dev container](#docker--vscode-editor---dev-container)
 - [Annexe](#annexe)
-  * [README.md - table content / markdown generator](#readmemd---table-content--markdown-generator)
+  - [README.md - table content / markdown generator](#readmemd---table-content--markdown-generator)
 
 <!-- tocstop -->
 
 # File content
-- Microsoft.PowerShell_profile.ps1 - powershell shortcuts for kubernetes and minikube (type $profile in powershell and copy paste the content in the file which is prompt -> C:\Users\<USER>\Documents\PowerShell\Microsoft.PowerShell_profile.ps1)
-- minikube-addon.sh - activate minikube addons
-- minikube-init.sh - init minikube environment with default values
-- minikube-purge.sh - drop minikube instance
-- minikube-start.sh - start minikube instance
-- minikube-stop.sh - stop minikube instance
+- `Microsoft.PowerShell_profile.ps1` - powershell shortcuts for kubernetes and minikube (type $profile in powershell and copy paste the content in the file which is prompt -> `C:\Users\<USER>\Documents\PowerShell\Microsoft.PowerShell_profile.ps1`)
+- `minikube-addon.sh` - activate minikube addons
+- `minikube-init.sh` - init minikube environment with default values
+- `minikube-purge.sh` - drop minikube instance
+- `minikube-start.sh` - start minikube instance
+- `minikube-stop.sh` - stop minikube instance
 
 # Minikube 
 ## Misc commands
