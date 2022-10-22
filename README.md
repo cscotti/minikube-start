@@ -2,11 +2,8 @@
 
 start minikube with additionnal plugins
 
-
-
-
-
-
+* Table of contents
+{:toc}
 # minikube misc cmd
 
 ```
@@ -36,7 +33,7 @@ minikube cache delete xxxx:latest
 ```
 
 
-# docker
+# Docker / commun
 
 ```
 # docker run
@@ -62,7 +59,8 @@ docker logs test-build
 docker exec test-build cp /source/file.txt /target/file.txt
 ```
 
-# docker volume mount - option 1
+# Docker / Volume
+## Volume Mount - option 1
 
 ```
 # step 1- mount the disk on the laptop to the Hyperkit VM
@@ -78,7 +76,7 @@ minikube ssh
 minikube mount $(pwd)/workdir:/workdir
 docker run --name test-build -v /workdir:/workdir -d test-build:latest test-build
 ```
-# docker Volume mount - option 2
+## Volume Mount - option 2
 ```
 stop minikube
 minikube stop
@@ -90,7 +88,7 @@ minikube start --mount --mount-string="/private/var/services/:/private/var/servi
 docker run -d --name redis -p 6379:6379 -v /private/var/services/redis:/data redis:5.0.3
 ```
 
-# docker Volume mount - option 3
+## Volume Mount - option 3
 <https://github.com/kubernetes/minikube/issues/2481><br>
 ```
 # mac alternative - Volume mount (but can be also run under linux)
@@ -102,7 +100,7 @@ scp -ri "$(minikube ssh-key)" "$PWD" docker@$(minikube ip):/tmp
 docker run --name node_build -v /tmp:/source -d ubuntu:22.10 bash -c "tail -f /dev/null"
 ```
 
-# Docker network
+# Docker / Network
 ```
 docker network ls
 docker inspect bridge
@@ -118,27 +116,27 @@ ssh -i ~/.minikube/machines/minikube/id_rsa docker@$(minikube ip) -L '*:19088:0.
 echo "`minikube ip` docker.local" | sudo tee -a /etc/hosts > /dev/null
 ```
 
-# Docker build
+# Docker / Build
 ```
 docker build -t myssh:v1 .
 ```
 
-#  Docker run / Daemon
+#  Docker / Run + Daemon
 ```
 docker run -d -P --name mytest myssh:v1
 ```
 
-# dev container
+# Dev container
 
 https://github.com/Microsoft/vscode-dev-containers/tree/main/containers/kubernetes-helm
 
 
-# ref : minikube doc
+# Ref : minikube doc
 
 <https://itnext.io/goodbye-docker-desktop-hello-minikube-3649f2a1c469><br>
 <https://devops.datenkollektiv.de/minikube-developing-and-testing-locally-with-k8s.html><br>
 <https://stackoverflow.com/questions/42564058/how-to-use-local-docker-images-with-minikube><br>
 <https://medium.com/rahasak/replace-docker-desktop-with-minikube-and-hyperkit-on-macos-783ce4fb39e3><br>
 
-# network
+# Network
 <https://gist.github.com/elsonrodriguez/add59648d097314d2aac9b3c8931278b>
