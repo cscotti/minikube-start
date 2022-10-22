@@ -2,8 +2,30 @@
 
 start minikube with additionnal plugins
 
-* Table of contents
-__TOC__
+# Table of contents
+
+<!-- toc -->
+
+- [minikube start script](#minikube-start-script)
+- [Table of contents](#table-of-contents)
+- [minikube misc cmd](#minikube-misc-cmd)
+- [Image / Load and remove (new)](#image--load-and-remove-new)
+- [Image / Load and remove (old)](#image--load-and-remove-old)
+- [Docker / commun](#docker--commun)
+- [Docker / Volume](#docker--volume)
+  - [Volume Mount - option 1](#volume-mount---option-1)
+  - [Volume Mount - option 2](#volume-mount---option-2)
+  - [Volume Mount - option 3](#volume-mount---option-3)
+- [Docker / Network](#docker--network)
+- [Docker / Build](#docker--build)
+- [Docker / Run + Daemon](#docker--run--daemon)
+- [Dev container](#dev-container)
+- [Ref : minikube doc](#ref--minikube-doc)
+- [Network](#network)
+- [table markdown generator](#table-markdown-generator)
+
+<!-- tocstop -->
+
 # minikube misc cmd
 
 ```
@@ -140,3 +162,11 @@ https://github.com/Microsoft/vscode-dev-containers/tree/main/containers/kubernet
 
 # Network
 <https://gist.github.com/elsonrodriguez/add59648d097314d2aac9b3c8931278b>
+
+
+# table markdown generator
+```
+npm i -g markdown-toc
+Insert <!-- toc --> (case sensitive) in your wiki's markdown
+markdown-toc -i my-wiki-markdown.md
+```
