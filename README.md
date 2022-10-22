@@ -30,7 +30,7 @@ start minikube with additionnal plugins
 <!-- tocstop -->
 
 # File content
-- Microsoft.PowerShell_profile.ps1 - powershell shortcuts for kubernetes and minikube (type $profile in powershell and copy paste the content in the file which is prompt)
+- Microsoft.PowerShell_profile.ps1 - powershell shortcuts for kubernetes and minikube (type $profile in powershell and copy paste the content in the file which is prompt -> C:\Users\<USER>\Documents\PowerShell\Microsoft.PowerShell_profile.ps1)
 - minikube-addon.sh - activate minikube addons
 - minikube-init.sh - init minikube environment with default values
 - minikube-purge.sh - drop minikube instance
