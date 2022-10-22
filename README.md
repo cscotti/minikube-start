@@ -190,7 +190,7 @@ docker run -d -P --name mytest myssh:v1
 
 ## Docker + Vscode Editor -> Dev container
 
-<https://github.com/Microsoft/vscode-dev-containers/tree/main/containers/kubernetes-helm>~~~~
+<https://github.com/Microsoft/vscode-dev-containers/tree/main/containers/kubernetes-helm>
 
 
 # Annexe
