@@ -6,6 +6,7 @@ start minikube with additionnal plugins
 
 <!-- toc -->
 
+- [File content](#file-content)
 - [Minikube](#minikube)
   * [Misc commands](#misc-commands)
   * [Minikube / Load and remove image (new)](#minikube--load-and-remove-image-new)
@@ -27,6 +28,14 @@ start minikube with additionnal plugins
   * [README.md - table content / markdown generator](#readmemd---table-content--markdown-generator)
 
 <!-- tocstop -->
+
+# File content
+- Microsoft.PowerShell_profile.ps1 - powershell shortcuts for kubernetes and minikube (type $profile in powershell and copy paste the content in the file which is prompt)
+- minikube-addon.sh - activate minikube addons
+- minikube-init.sh - init minikube environment with default values
+- minikube-purge.sh - drop minikube instance
+- minikube-start.sh - start minikube instance
+- minikube-stop.sh - stop minikube instance
 
 # Minikube 
 ## Misc commands
