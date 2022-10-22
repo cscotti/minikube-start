@@ -6,7 +6,7 @@ start minikube with additionnal plugins
 
 <!-- toc -->
 
-- [minikube misc cmd](#minikube-misc-cmd)
+- [Minikube / Misc commands](#minikube--misc-commands)
 - [Image / Load and remove (new)](#image--load-and-remove-new)
 - [Image / Load and remove (old)](#image--load-and-remove-old)
 - [Docker / commun](#docker--commun)
@@ -18,14 +18,15 @@ start minikube with additionnal plugins
 - [Docker / Network](#docker--network)
 - [Docker / Build](#docker--build)
 - [Docker / Run + Daemon](#docker--run--daemon)
-- [Dev container](#dev-container)
-- [Ref : minikube doc](#ref--minikube-doc)
+- [Docker + Vscode Editor -> Dev container](#docker--vscode-editor---dev-container)
+- [Minikube reference](#minikube-reference)
 - [Network](#network)
-- [README.md / index table markdown generator](#readmemd--index-table-markdown-generator)
+- [Annexe](#annexe)
+  * [README.md - table content / markdown generator](#readmemd---table-content--markdown-generator)
 
 <!-- tocstop -->
 
-# minikube misc cmd
+# Minikube / Misc commands
 
 ```
 minikube ip
@@ -164,12 +165,12 @@ docker build -t myssh:v1 .
 docker run -d -P --name mytest myssh:v1
 ```
 
-# Dev container
+# Docker + Vscode Editor -> Dev container
 
-<https://github.com/Microsoft/vscode-dev-containers/tree/main/containers/kubernetes-helm
+<https://github.com/Microsoft/vscode-dev-containers/tree/main/containers/kubernetes-helm>~~~~
 
 
-# Ref : minikube doc
+# Minikube reference
 
 <https://itnext.io/goodbye-docker-desktop-hello-minikube-3649f2a1c469><br>
 <https://devops.datenkollektiv.de/minikube-developing-and-testing-locally-with-k8s.html><br>
@@ -180,6 +181,10 @@ docker run -d -P --name mytest myssh:v1
 <https://gist.github.com/elsonrodriguez/add59648d097314d2aac9b3c8931278b>
 
 
-# README.md / index table markdown generator
+# Annexe
+## README.md - table content / markdown generator
 <https://stackoverflow.com/questions/18244417/how-do-i-create-some-kind-of-table-of-content-in-github-wiki><br>
 <https://github.com/jonschlinkert/markdown-toc>
+```
+markdown-toc -i README.md
+```
