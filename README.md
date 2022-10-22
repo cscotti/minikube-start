@@ -3,7 +3,7 @@
 start minikube with additionnal plugins
 
 * Table of contents
-{:toc}
+[[_TOC_]]
 # minikube misc cmd
 
 ```
