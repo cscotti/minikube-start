@@ -6,23 +6,22 @@ start minikube with additionnal plugins
 
 <!-- toc -->
 
-- [minikube start script](#minikube-start-script)
-- [Table of contents](#table-of-contents)
 - [minikube misc cmd](#minikube-misc-cmd)
 - [Image / Load and remove (new)](#image--load-and-remove-new)
 - [Image / Load and remove (old)](#image--load-and-remove-old)
 - [Docker / commun](#docker--commun)
+- [Docker / optimize local ressource](#docker--optimize-local-ressource)
 - [Docker / Volume](#docker--volume)
-  - [Volume Mount - option 1](#volume-mount---option-1)
-  - [Volume Mount - option 2](#volume-mount---option-2)
-  - [Volume Mount - option 3](#volume-mount---option-3)
+  * [Volume Mount - option 1](#volume-mount---option-1)
+  * [Volume Mount - option 2](#volume-mount---option-2)
+  * [Volume Mount - option 3](#volume-mount---option-3)
 - [Docker / Network](#docker--network)
 - [Docker / Build](#docker--build)
 - [Docker / Run + Daemon](#docker--run--daemon)
 - [Dev container](#dev-container)
 - [Ref : minikube doc](#ref--minikube-doc)
 - [Network](#network)
-- [table markdown generator](#table-markdown-generator)
+- [README.md / index table markdown generator](#readmemd--index-table-markdown-generator)
 
 <!-- tocstop -->
 
@@ -81,6 +80,13 @@ docker logs test-build
 docker exec test-build cp /source/file.txt /target/file.txt
 ```
 
+# Docker / optimize local ressource
+The Minikube recent update(v1.24.0) supports to start Minikube VM without starting any Kubernetes in it
+used the flag --no-kubernetes
+```
+minikube config unset kubernetes-version
+```
+
 # Docker / Volume
 ## Volume Mount - option 1
 
@@ -124,6 +130,16 @@ docker run --name node_build -v /tmp:/source -d ubuntu:22.10 bash -c "tail -f /d
 
 # Docker / Network
 ```
+# configure minikube cluster with new bridge ip
+minikube start --docker-opt=bip=172.17.42.1/16
+
+# docker restore bridge ip
+minikube start --live-restore
+
+# check docker network
+ip a show dev docker0
+
+docker network list
 docker network ls
 docker inspect bridge
 docker inspect bridge |jq '.[0].IPAM.Config[0].Gateway'
@@ -150,7 +166,7 @@ docker run -d -P --name mytest myssh:v1
 
 # Dev container
 
-https://github.com/Microsoft/vscode-dev-containers/tree/main/containers/kubernetes-helm
+<https://github.com/Microsoft/vscode-dev-containers/tree/main/containers/kubernetes-helm
 
 
 # Ref : minikube doc
@@ -164,9 +180,6 @@ https://github.com/Microsoft/vscode-dev-containers/tree/main/containers/kubernet
 <https://gist.github.com/elsonrodriguez/add59648d097314d2aac9b3c8931278b>
 
 
-# table markdown generator
-```
-npm i -g markdown-toc
-Insert <!-- toc --> (case sensitive) in your wiki's markdown
-markdown-toc -i my-wiki-markdown.md
-```
+# README.md / index table markdown generator
+<https://stackoverflow.com/questions/18244417/how-do-i-create-some-kind-of-table-of-content-in-github-wiki><br>
+<https://github.com/jonschlinkert/markdown-toc>
